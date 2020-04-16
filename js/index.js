@@ -130,10 +130,6 @@ Snake.prototype.getNextPos = function(){
 		return;
 	}
 	
-	
-	
-	
-	
 	//下个点什么都没有，继续走
 	this.strategis.move.call(this);
 	
@@ -234,7 +230,7 @@ Game.prototype.init = function(){
 	createFood();
 	
 	document.onkeydown = function(ev){
-		if(ev.which==37 && snake.direction != snake.directonNum.left){ //正向右移动时用户按下左键时无反应
+		if(ev.which==37 && snake.direction != snake.directonNum.right){ //正向右移动时用户按下左键时无反应
 			snake.direction = snake.directonNum.left;
 		}else if(ev.which==38 && snake.direction != snake.directonNum.down){
 			snake.direction = snake.directonNum.up;
@@ -258,6 +254,9 @@ Game.prototype.pause = function(){
 Game.prototype.over = function(){
 	clearInterval(this.timer);
 	alert("得分:"+this.score);
+	
+	
+	
 	//游戏回到最初状态
 	var snakeWrap = document.getElementById("snakeWrap");
 	snakeWrap.innerHTML = "";
@@ -272,20 +271,25 @@ Game.prototype.over = function(){
 //开启游戏
 game = new Game();
 var startBtn = document.querySelector(".startBtn button");
+var audio = document.querySelector("audio")
 startBtn.onclick = function(){
 	startBtn.parentNode.style.display = "none";
 	game.init();
+	audio.play();
 }
+
 
 //暂停
 var snakeWrap = document.getElementById("snakeWrap");
 var pauseBtn = document.querySelector(".pauseBtn button");
 snakeWrap.onclick = function(){
 	game.pause();
+	audio.pause();
 	pauseBtn.parentNode.style.display = "block";
 	
 }
 pauseBtn.onclick = function(){
 	game.start();
+	audio.play();
 	pauseBtn.parentNode.style.display = "none";
 }
