@@ -5,17 +5,6 @@
 	position: relative;
 }
 
-#scoreboard{
-	width: 160px;
-	height: 400px;
-	background-color: #FFC0CB;
-	border: 10px solid lightgreen;
-	top:0;
-	left: -350px;
-	position: absolute;
-	float: left;
-}
-
 span{
 	padding: 55px;
 }
